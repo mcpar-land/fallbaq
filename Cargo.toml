@@ -1,0 +1,28 @@
+[package]
+name = "fallbaq"
+version = "0.1.0"
+authors = ["mcpar-land <john@mcpar.land>"]
+license = "MIT"
+description = "A layering static file server."
+readme = "README.md"
+homepage = "https://github.com/mcpar-land/fallbaq"
+repository = "https://github.com/mcpar-land/fallbaq"
+keywords = ["http", "fileserve", "static", "fallback"]
+categories = ["command-line-utilities"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+clap = "2.33.1"
+actix-web = "2.0.0"
+actix-files = "0.2.2"
+actix-rt = "1.1.1"
+actix-http = "1.0.1"
+path-dedot = "3.0.0"
+colored = "1.9.3"
+
+[dev-dependencies]
+
+tempfile = "3.1.0"
