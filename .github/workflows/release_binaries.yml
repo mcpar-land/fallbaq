@@ -1,0 +1,44 @@
+name: Release Binaries
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  release:
+    name: Release for ${{matrix.os}}
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: fallbaq
+            asset_name: fallbaq-linux-amd64
+          - os: windows-latest
+            artifact_name: fallbaq.exe
+            asset_name: fallbaq-windows-amd64
+          - os: macos-latest
+            artifact_name: fallbaq
+            asset_name: fallbaq-macos-amd64
+    steps:
+    - uses: hecrj/setup-rust-action@v1
+      with:
+        rust-version: stable
+    - uses: actions/checkout@v2
+    - name: Run Tests
+      run: cargo test --verbose
+    - name: Build
+      run: cargo build --verbose --release --locked
+    - name: Upload Binary
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{secrets.GITHUB_TOKEN}}
+        tag: ${{github.ref}}
+        file: target/release/${{matrix.artifact_name}}
+        asset_name: ${{matrix.asset_name}}
+    
+
