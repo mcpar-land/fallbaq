@@ -19,6 +19,8 @@ fallbaq ./files --port 1337
 
 # Example:
 
+Consider a file system like this:
+
 ```markdown
 # ./files
 
@@ -69,3 +71,9 @@ Will expose a file system that looks like this to requests:
     - foo1.png        (from ./fallback_files)
 ```
 <!-- prettier-ignore-end -->
+
+# Future Features
+
+- Serving as a proxy to another http location
+- fallback to a single file
+- some sort of `.fallbaqignore` file you can include in your directories.
