@@ -6,6 +6,18 @@ A super simple static file server with a focus on fallback to alternate director
 fallbaq ./files ./fallback_files /more_fallback_files
 ```
 
+# Installation
+
+Install with [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+
+```
+cargo install fallbaq
+```
+
+Alternatively, download one of the [releases](https://github.com/mcpar-land/fallbaq/releases)
+
+# Use
+
 Pass a number of directories. Files will be loaded starting from the first, and then from following directories if they aren't present. A 404 will be returned if the file is not found in any directory.
 
 Think of it as layering different folders on top of each other.
